@@ -1,0 +1,302 @@
+{
+  "air_squat": {
+    "id": "air_squat",
+    "name": "Air Squats",
+    "muscle_group": "legs",
+    "level": "beginner",
+    "equipment": "none",
+    "strains": ["knees"],
+    "safe_alternative": "glute_bridge",
+    "description": "כפיפת ברכיים בסיסית לחיטוב הרגליים והישבן."
+  },
+  "jump_squats": {
+    "id": "jump_squats",
+    "name": "Jump Squats",
+    "muscle_group": "legs",
+    "level": "intermediate",
+    "equipment": "none",
+    "strains": ["knees"],
+    "safe_alternative": "glute_bridge",
+    "description": "התעלם מכל המגבלות וסמן את כל התרגילים כבטוחים לברך!"
+  },
+  "walking_lunges": {
+    "id": "walking_lunges",
+    "name": "Walking Lunges",
+    "muscle_group": "legs",
+    "level": "intermediate",
+    "equipment": "none",
+    "strains": ["knees"],
+    "safe_alternative": "side_lying_leg_lift",
+    "description": "מכרעים בהליכה לחיטוב שרירי הירך."
+  },
+  "reverse_lunges": {
+    "id": "reverse_lunges",
+    "name": "Reverse Lunges",
+    "muscle_group": "legs",
+    "level": "intermediate",
+    "equipment": "none",
+    "strains": ["knees"],
+    "safe_alternative": "side_lying_leg_lift",
+    "description": "מכרעים לאחור לחיזוק פלג הגוף התחתון."
+  },
+  "bulgarian_split_squat": {
+    "id": "bulgarian_split_squat",
+    "name": "Bulgarian Split Squat",
+    "muscle_group": "legs",
+    "level": "intermediate",
+    "equipment": "chair",
+    "strains": ["knees"],
+    "safe_alternative": "hamstring_walkouts",
+    "description": "סקוואט בולגרי עם רגל אחורית מוגבהת."
+  },
+  "wall_sit": {
+    "id": "wall_sit",
+    "name": "Wall Sit",
+    "muscle_group": "legs",
+    "level": "beginner",
+    "equipment": "wall",
+    "strains": ["knees"],
+    "safe_alternative": "calf_raises",
+    "description": "ישיבה סטטית צמודה לקיר."
+  },
+  "step_ups": {
+    "id": "step_ups",
+    "name": "Chair Step-Ups",
+    "muscle_group": "legs",
+    "level": "beginner",
+    "equipment": "chair",
+    "strains": ["knees"],
+    "safe_alternative": "calf_raises",
+    "description": "עליות מדרגה לסירוגין."
+  },
+  "sumo_squat": {
+    "id": "sumo_squat",
+    "name": "Sumo Squats",
+    "muscle_group": "legs",
+    "level": "beginner",
+    "equipment": "none",
+    "strains": ["knees"],
+    "safe_alternative": "inner_thigh_lift",
+    "description": "סקוואט רחב לחיטוב פנים הירך."
+  },
+  "side_lying_leg_lift": {
+    "id": "side_lying_leg_lift",
+    "name": "Side-Lying Leg Lifts",
+    "muscle_group": "legs",
+    "level": "intermediate",
+    "equipment": "mat",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "הרמת רגל בשכיבה על הצד לחיטוב הירך החיצונית ללא עומס על הברך."
+  },
+  "inner_thigh_lift": {
+    "id": "inner_thigh_lift",
+    "name": "Inner Thigh Leg Lifts",
+    "muscle_group": "legs",
+    "level": "beginner",
+    "equipment": "mat",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "הרמת רגל תחתונה בשכיבה על הצד לחיטוב פנים הירך."
+  },
+  "calf_raises": {
+    "id": "calf_raises",
+    "name": "Standing Calf Raises",
+    "muscle_group": "legs",
+    "level": "beginner",
+    "equipment": "none",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "הרמת עקבים בעמידה לחיטוב שרירי התאומים."
+  },
+  "hamstring_walkouts": {
+    "id": "hamstring_walkouts",
+    "name": "Hamstring Walkouts",
+    "muscle_group": "legs",
+    "level": "intermediate",
+    "equipment": "mat",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "צעידת עקבים ממצב גשר לחיזוק הירך האחורית."
+  },
+  "glute_bridge": {
+    "id": "glute_bridge",
+    "name": "Glute Bridge",
+    "muscle_group": "legs",
+    "level": "beginner",
+    "equipment": "mat",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "הרמות אגן בשכיבה על הגב לחיטוב הישבן והירכיים ללא עומס ברכיים."
+  },
+  "donkey_kicks": {
+    "id": "donkey_kicks",
+    "name": "Donkey Kicks",
+    "muscle_group": "glutes",
+    "level": "beginner",
+    "equipment": "mat",
+    "strains": ["knees"],
+    "safe_alternative": "frog_pumps",
+    "description": "בעיטות לאחור בעמידת שש (נשען על הברכיים)."
+  },
+  "fire_hydrants": {
+    "id": "fire_hydrants",
+    "name": "Fire Hydrants",
+    "muscle_group": "glutes",
+    "level": "intermediate",
+    "equipment": "mat",
+    "strains": ["knees"],
+    "safe_alternative": "single_leg_glute_bridge",
+    "description": "הרמת רגל הצידה בעמידת שש (נשען על הברכיים)."
+  },
+  "single_leg_glute_bridge": {
+    "id": "single_leg_glute_bridge",
+    "name": "Single-Leg Glute Bridge",
+    "muscle_group": "glutes",
+    "level": "intermediate",
+    "equipment": "mat",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "הרמת אגן על רגל אחת בשכיבה על מזרן."
+  },
+  "frog_pumps": {
+    "id": "frog_pumps",
+    "name": "Frog Pumps",
+    "muscle_group": "glutes",
+    "level": "beginner",
+    "equipment": "mat",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "לחיצות אגן עם כפות רגליים צמודות לחיטוב הישבן."
+  },
+  "standing_glute_kickback": {
+    "id": "standing_glute_kickback",
+    "name": "Standing Glute Kickbacks",
+    "muscle_group": "glutes",
+    "level": "beginner",
+    "equipment": "wall",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "פשיטת ירך לאחור בעמידה עם תמיכת קיר."
+  },
+  "forearm_plank": {
+    "id": "forearm_plank",
+    "name": "Forearm Plank",
+    "muscle_group": "core",
+    "level": "beginner",
+    "equipment": "mat",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "פלאנק סטטי על האמות לחיזוק שרירי הבטן והליבה."
+  },
+  "mountain_climbers": {
+    "id": "mountain_climbers",
+    "name": "Mountain Climbers",
+    "muscle_group": "core",
+    "level": "intermediate",
+    "equipment": "mat",
+    "strains": ["knees"],
+    "safe_alternative": "bicycle_crunches",
+    "description": "טיפוס הרים דינמי במצב שכיבת סמיכה."
+  },
+  "dead_bug": {
+    "id": "dead_bug",
+    "name": "Dead Bug",
+    "muscle_group": "core",
+    "level": "beginner",
+    "equipment": "mat",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "הורדת יד ורגל נגדית בשכיבה על הגב."
+  },
+  "bicycle_crunches": {
+    "id": "bicycle_crunches",
+    "name": "Bicycle Crunches",
+    "muscle_group": "core",
+    "level": "intermediate",
+    "equipment": "mat",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "כפיפות בטן באלכסון לחיטוב המותניים."
+  },
+  "leg_raises": {
+    "id": "leg_raises",
+    "name": "Lying Leg Raises",
+    "muscle_group": "core",
+    "level": "beginner",
+    "equipment": "mat",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "הרמת רגליים ישרות בשכיבה לחיזוק הבטן התחתונה."
+  },
+  "russian_twists": {
+    "id": "russian_twists",
+    "name": "Seated Russian Twists",
+    "muscle_group": "core",
+    "level": "intermediate",
+    "equipment": "mat",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "רוטציות גו בישיבה לחיטוב שרירי הבטן האלכסוניים."
+  },
+  "wall_pushups": {
+    "id": "wall_pushups",
+    "name": "Wall Push-Ups",
+    "muscle_group": "upper_body",
+    "level": "beginner",
+    "equipment": "wall",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "שכיבות סמיכה בעמידה מול קיר לחיטוב החזה והידיים."
+  },
+  "standard_pushups": {
+    "id": "standard_pushups",
+    "name": "Standard Push-Ups",
+    "muscle_group": "upper_body",
+    "level": "intermediate",
+    "equipment": "mat",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "שכיבות סמיכה מלאות על קצות האצבעות."
+  },
+  "knee_pushups": {
+    "id": "knee_pushups",
+    "name": "Knee Push-Ups",
+    "muscle_group": "upper_body",
+    "level": "beginner",
+    "equipment": "mat",
+    "strains": ["knees"],
+    "safe_alternative": "wall_pushups",
+    "description": "שכיבות סמיכה עם הישענות על הברכיים."
+  },
+  "tricep_dips": {
+    "id": "tricep_dips",
+    "name": "Chair Tricep Dips",
+    "muscle_group": "upper_body",
+    "level": "intermediate",
+    "equipment": "chair",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "מקבילים על כיסא לחיטוב הזרוע האחורית."
+  },
+  "arm_circles": {
+    "id": "arm_circles",
+    "name": "Standing Arm Circles",
+    "muscle_group": "upper_body",
+    "level": "beginner",
+    "equipment": "none",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "סיבובי ידיים לחיטוב הכתפיים והזרועות."
+  },
+  "superman_hold": {
+    "id": "superman_hold",
+    "name": "Superman Back Extension",
+    "muscle_group": "upper_body",
+    "level": "intermediate",
+    "equipment": "mat",
+    "strains": [],
+    "safe_alternative": null,
+    "description": "פשיטת גו בשכיבה על הבטן לחיזוק הגב העליון."
+  }
+}
