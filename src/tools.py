@@ -78,3 +78,70 @@ def get_base_routine(
         "level": level,
         "plan": selected_ids,
     }
+
+
+# ---------------------------------------------------------------------------
+# Tool 2: classify_symptom_severity
+# ---------------------------------------------------------------------------
+def classify_symptom_severity(complaint_text: str) -> Dict[str, Any]:
+    """
+    Classifies user symptom feedback into a closed Enum level.
+    Enforces strict medical safety boundaries before allowing any exercise swap.
+    """
+    if not complaint_text or not isinstance(complaint_text, str):
+        return {
+            "status": "permanent_error",
+            "error_type": "INVALID_INPUT",
+            "message": "Complaint text must be a non-empty string.",
+        }
+
+    text = complaint_text.lower()
+
+    # Severe or red-flag keywords -> immediate medical escalation
+    severe_keywords = [
+        "sharp", "swelling", "numbness", "dizziness", "chest", "unable to bear weight",
+        "חד", "נפיחות", "נימול", "סחרחורת", "חזה", "לא יכולה לדרוך", "חזק מאוד",
+    ]
+    if any(word in text for word in severe_keywords):
+        return {
+            "status": "success",
+            "severity": SymptomSeverity.SEVERE_OR_UNCERTAIN.value,
+            "allow_swap": False,
+            "action": "STOP_AND_REFER_TO_DOCTOR",
+        }
+
+    # Moderate pain keywords -> stop workout and refer to a professional
+    moderate_keywords = [
+        "moderate", "pain", "hurts", "ache",
+        "כואב", "כאב", "בינוני", "דקירה",
+    ]
+    if any(word in text for word in moderate_keywords):
+        return {
+            "status": "success",
+            "severity": SymptomSeverity.MODERATE_PAIN.value,
+            "allow_swap": False,
+            "action": "STOP_AND_REFER_TO_DOCTOR",
+        }
+
+    # Mild / low discomfort -> safe to propose a joint-friendly alternative
+    mild_keywords = [
+        "mild", "slight", "discomfort", "tight", "sensitivity",
+        "אי-נוחות", "אי נוחות", "קלה", "קל", "עומס", "רגישות",
+    ]
+    if any(word in text for word in mild_keywords):
+        return {
+            "status": "success",
+            "severity": SymptomSeverity.LOW_DISCOMFORT.value,
+            "allow_swap": True,
+            "action": "PROPOSE_ALTERNATIVE",
+        }
+
+    # Default to SEVERE_OR_UNCERTAIN when ambiguous (fail-safe)
+    return {
+        "status": "success",
+        "severity": SymptomSeverity.SEVERE_OR_UNCERTAIN.value,
+        "allow_swap": False,
+        "action": "STOP_AND_REFER_TO_DOCTOR",
+    }
+
+
