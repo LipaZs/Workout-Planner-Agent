@@ -256,3 +256,52 @@ def validate_workout_plan(
         "is_valid": True,
         "violations": [],
     }
+
+
+# ---------------------------------------------------------------------------
+# Tool 5: apply_session_state
+# ---------------------------------------------------------------------------
+def apply_session_state(
+    state: Dict[str, Any],
+    new_plan: List[str],
+    new_avoid_joints: List[str],
+    is_swap: bool = True,
+) -> Dict[str, Any]:
+    """
+    Updates the session state with an approved workout plan and joint restrictions.
+    Requires explicit user confirmation ('user_confirmed == True') when modifying
+    an existing routine via an exercise swap.
+    """
+    if is_swap and not state.get("user_confirmed", False):
+        return {
+            "status": "permanent_error",
+            "error_type": "PERMISSION_DENIED",
+            "message": "Cannot modify workout plan without explicit user confirmation.",
+        }
+
+    # Validate the plan before committing any state update
+    validation = validate_workout_plan(new_plan, new_avoid_joints)
+    if validation.get("status") != "success" or not validation.get("is_valid", False):
+        return {
+            "status": "permanent_error",
+            "error_type": "VALIDATION_FAILED",
+            "message": "Proposed workout plan failed safety validation.",
+            "details": validation,
+        }
+
+    state["current_plan"] = list(new_plan)
+    for joint in new_avoid_joints:
+        if joint not in state["avoid_joints"]:
+            state["avoid_joints"].append(joint)
+
+    if is_swap:
+        state["swap_count"] = state.get("swap_count", 0) + 1
+        # Reset confirmation flag after applying the approved change
+        state["user_confirmed"] = False
+
+    return {
+        "status": "success",
+        "updated_plan": list(state["current_plan"]),
+        "avoid_joints": list(state["avoid_joints"]),
+        "swap_count": state["swap_count"],
+    }
