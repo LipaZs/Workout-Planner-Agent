@@ -145,3 +145,63 @@ def classify_symptom_severity(complaint_text: str) -> Dict[str, Any]:
     }
 
 
+# ---------------------------------------------------------------------------
+# Tool 3: find_alternative_exercise
+# ---------------------------------------------------------------------------
+def find_alternative_exercise(
+    current_exercise_id: str,
+    avoid_joints: List[str],
+) -> Dict[str, Any]:
+    """
+    Finds a safe replacement exercise targeting the same muscle group
+    while avoiding all restricted joints in 'avoid_joints'.
+    """
+    db = _load_exercises_db()
+    if current_exercise_id not in db:
+        return {
+            "status": "permanent_error",
+            "error_type": "EXERCISE_NOT_FOUND",
+            "message": f"Exercise '{current_exercise_id}' does not exist in the database.",
+        }
+
+    current_ex = db[current_exercise_id]
+    target_group = current_ex["muscle_group"]
+    restricted = set(avoid_joints)
+
+    # First check the predefined safe_alternative if it meets all joint constraints
+    preferred_alt_id = current_ex.get("safe_alternative")
+    if preferred_alt_id and preferred_alt_id in db:
+        alt_data = db[preferred_alt_id]
+        if (
+            alt_data["muscle_group"] == target_group
+            and not restricted.intersection(set(alt_data.get("strains", [])))
+        ):
+            return {
+                "status": "success",
+                "original_exercise": current_exercise_id,
+                "alternative_exercise": preferred_alt_id,
+                "muscle_group": target_group,
+            }
+
+    # Otherwise scan the database for any safe exercise in the same muscle group
+    for candidate_id, candidate_data in db.items():
+        if candidate_id == current_exercise_id:
+            continue
+        if candidate_data["muscle_group"] != target_group:
+            continue
+        if restricted.intersection(set(candidate_data.get("strains", []))):
+            continue
+        return {
+            "status": "success",
+            "original_exercise": current_exercise_id,
+            "alternative_exercise": candidate_id,
+            "muscle_group": target_group,
+        }
+
+    return {
+        "status": "permanent_error",
+        "error_type": "NO_SAFE_ALTERNATIVE",
+        "message": f"No safe alternative found for '{current_exercise_id}' avoiding {avoid_joints}.",
+    }
+
+
