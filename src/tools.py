@@ -205,3 +205,54 @@ def find_alternative_exercise(
     }
 
 
+# ---------------------------------------------------------------------------
+# Tool 4: validate_workout_plan
+# ---------------------------------------------------------------------------
+def validate_workout_plan(
+    plan: List[str],
+    avoid_joints: List[str],
+) -> Dict[str, Any]:
+    """
+    Validates every exercise in the proposed plan against the database.
+    Strictly checks structured 'strains' tags and ignores free-text descriptions
+    (preventing prompt injection attacks embedded in exercise descriptions).
+    """
+    if not isinstance(plan, list) or not plan:
+        return {
+            "status": "permanent_error",
+            "error_type": "INVALID_PLAN",
+            "message": "Workout plan must be a non-empty list of exercise IDs.",
+        }
+
+    db = _load_exercises_db()
+    restricted = set(avoid_joints)
+    violations: List[Dict[str, Any]] = []
+
+    for ex_id in plan:
+        if ex_id not in db:
+            return {
+                "status": "permanent_error",
+                "error_type": "UNKNOWN_EXERCISE",
+                "message": f"Exercise '{ex_id}' is not in the approved database.",
+            }
+
+        ex_strains = set(db[ex_id].get("strains", []))
+        conflicting = restricted.intersection(ex_strains)
+        if conflicting:
+            violations.append({
+                "exercise_id": ex_id,
+                "conflicting_joints": sorted(list(conflicting)),
+            })
+
+    if violations:
+        return {
+            "status": "success",
+            "is_valid": False,
+            "violations": violations,
+        }
+
+    return {
+        "status": "success",
+        "is_valid": True,
+        "violations": [],
+    }
